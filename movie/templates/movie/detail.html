@@ -8,4 +8,21 @@
 <strong>Language: </strong>{{detail.Language|escape}}<br>
 <strong>Actors: </strong>{{detail.Actors|escape}}<br>
 <strong>Plot: </strong>{{detail.Plot|escape}}<br>
+
+<h2 style="text-align:center">Comments</h2>
+<form action="{% url 'comment:save' detail.imdbID %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="user" value="{{user}}" /">
+    <textarea name="comment" rows="4" class="form-control"></textarea><br>
+    <input type="submit" value="Submit" class="btn btn-success center-block"/>
+</form>
+
+{% if comments %}
+    <ul>
+    {% for comment in comments %}
+        <li><strong>{{comment.user}}</strong> said {{comment.text}} ({{comment.date}})</li>
+    {% endfor %}
+    <ul>
+{% endif %}
+
 {% endblock %}
