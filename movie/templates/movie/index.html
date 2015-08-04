@@ -1,1 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
 <h1>Welcome to MyMovie</h1>
+
+<h3>Please search your favourite movies or TV shows below</h3>
+
+<form action="{% url 'movie:search' %}" method="post">
+{% csrf_token %}
+<input type="text" name="value" />
+<input type="submit" value="Search" />
+</form>
+
+{% if result %}
+    <ul>
+    {% for movie in result.Search %}
+        <li><a href="{% url 'movie:detail' movie.imdbID %}">{{ movie.Title|escape}} ({{movie.Year|escape}})</a></li>
+    {% endfor %}
+    <ul>
+{% endif %}
+
+<a href="{% url 'login:logout' %}">Logout</a>
+{% endblock %}

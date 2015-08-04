@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'movie:index' %}">Back</a><br>
+<h1>{{detail.Title|escape}}</h1>
+<strong>Year:</strong>{{detail.Year|escape}}<br>
+<strong>Country:</strong>{{detail.Country|escape}}<br>
+<strong>Language:</strong>{{detail.Language|escape}}<br>
+<strong>Actors:</strong>{{detail.Actors|escape}}<br>
+<strong>Plot:</strong>{{detail.Plot|escape}}<br>
+{% endblock %}
