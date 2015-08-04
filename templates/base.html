@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <title>MyMovie</title>
 </head>
-<body>
+<body style="padding:0em 1em">
     <nav class="navbar navbar-default">
         {% if user.is_authenticated %}
             <ul class="nav navbar-nav">
@@ -14,10 +14,13 @@
             </ul>
         {% endif %}
     </nav>
-    {% if error %}
-      <div class="bg-danger" style="padding: 1em"><strong>Error: {{error}}</strong></div>
-    {% endif %}
-    {% block content %}
-    {% endblock %}
+    <div style="padding:0em 5em">
+        {% if error %}
+          <div class="bg-danger" style="padding: 1em"><strong>Error: {{error}}</strong></div>
+        {% endif %}
+        <h1 style="text-align:center">{% block title %}{% endblock%}</h1>
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

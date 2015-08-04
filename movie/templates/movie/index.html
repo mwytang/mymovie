@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% block title %}
+Welcome to MyMovie
+{% endblock %}
 {% block content %}
-<h1>Welcome to MyMovie</h1>
-
 <h3>Please search your favourite movies or TV shows below</h3>
 
 <form action="{% url 'movie:search' %}" method="post">
